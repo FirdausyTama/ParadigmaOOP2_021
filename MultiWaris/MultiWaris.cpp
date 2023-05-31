@@ -1,22 +1,17 @@
 #include <iostream>
-
+#include <String>
 using namespace std;
 
-class AbstraksiKlas {
-private: string x, y;
-
+class orang {
 public:
+	string nama;
 
-	// method untuk mengisi nilai 
-	// private member
-	void setXY(string a, string b) {
-		x = a;
-		y = b;
+	orang(string pNama) :
+		nama(pNama) {
+		cout << "orang dibuat\n" << endl;
 	}
-	//menampilkan nilai
-	void display() {
-		cout << "x = " << x << endl;
-		cout << "y = " << y << endl;
+	~orang() {
+		cout << "orang dihapus\n" << endl;
 	}
 };
 
@@ -30,5 +25,24 @@ public:
 	}
 	~manusia() {
 		cout << "manusia diahpus\n" << endl;
+	}
+};
+
+class pelajar : private manusia, public orang {
+public:
+	string sekolah;
+
+	pelajar(string pNama, string pjeniskelamin, string pSekolah) :
+		orang(pNama),
+		manusia(pjeniskelamin),
+		sekolah(pSekolah) {
+		cout << "pelajar dibuat\n" << endl;
+	}
+	~pelajar() {
+		cout << "pelajar dihapus\n" << endl;
+	}
+	string perkenalan() {
+		return "Hallo, nama saya " + nama + " dengan jenis kelamin "
+			+ jeniskelamin + " dari sekolah " + sekolah + "\n\n";
 	}
 };
